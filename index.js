@@ -81,3 +81,69 @@ user[teamBId] = "teamB-id-67890";
 
 console.log(user[teamAId]); // Outputs: 'teamA-id-12345'
 console.log(user[teamBId]); // Outputs: 'teamB-id-67890'
+
+// SCOPE AND HOSITING IN JAVASCRIPRT
+
+// Scope => scope in javascripte are determine where variable and function are accessible. think of scope asa a contaiern for varialbe and function.
+
+// There are two main type of scope
+
+// GLOBAL SCOPE =>  varialble are declared outside  any function and varialeble. they can acces anywhere is the code
+// LOCAL SCOPE => varialble are declared inside the function. they can only accessible inside the function or block
+
+// GLOBAL SCOPE EXAMPLE:-
+
+// if you declare variable outside of any function , it has global scope
+
+var globalVar = "I am a global variable";
+
+function testFunction() {
+  console.log(globalVar); // Accessible here
+}
+
+console.log(globalVar); // Accessible here too
+
+// FUNCTION SCOPE:- Variables declared inside a function are in the local (or function) scope.
+// They Cannot Access Outside The Function.
+
+function testFunction() {
+  var localVar = "I am a local variable";
+  console.log(localVar); // Accessible here
+}
+
+console.log(localVar); // Error: localVar is not defined
+
+// BLOCK SCOPE:- With Let And Const Javascript Introduced Block Scope
+// Variable declare with let and const  inside a blockare only acceesible within that scope.
+
+if (true) {
+  let blockVar = "I am a block-scoped variable";
+  console.log(blockVar); // Accessible here
+}
+
+console.log(blockVar); // Error: blockVar is not defined
+
+// HOISTING IN JAVASCRIPT
+// hoisting in javascript is a behaviouse where variable and function declaration are move to the top their containing scope. during complie phase. this means you can use function and varialbe before they are actual declare in the code.
+
+// VARIABLE HOISTING:- varialble declare with var are hoisted of the top of their scope but only the declaration on the intialiation
+
+console.log(hoistedVar); // Undefined, not an error
+var hoistedVar = "I am hoisted";
+console.log(hoistedVar); // "I am hoisted"
+
+// FUNCTION HOISTING:- function declaration are completely hoisted with function body  are moved to the top of their scope.
+
+hoistedFunction(); // "I am a hoisted function"
+
+function hoistedFunction() {
+  console.log("I am a hoisted function");
+}
+
+// LET AND CONST:- varialble declare with let and const are hoisted but they are not initalize unitl theris definition are encountered. they are in "Temporal Dead Zone" from the start of the block until the declaration in encountered.
+
+console.log(hoistedLet); // ReferenceError: Cannot access 'hoistedLet' before initialization
+let hoistedLet = "I am hoisted but not initialized";
+
+console.log(hoistedConst); // ReferenceError: Cannot access 'hoistedConst' before initialization
+const hoistedConst = "I am hoisted but not initialized";
